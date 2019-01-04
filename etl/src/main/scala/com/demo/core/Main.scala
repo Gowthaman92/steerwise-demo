@@ -12,7 +12,8 @@ object Main {
   def main(args: Array[String]) {
   
     val spark = getSparkSession()
-    val csvDf = spark.read.option("header","true").csv("/home/gowtham/Downloads/retail.csv")
+    val filename = args(0)
+    val csvDf = spark.read.option("header","true").csv(filename)
     
     val transformedDf = transformDF(csvDf,spark)
     
